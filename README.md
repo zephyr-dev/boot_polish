@@ -1,5 +1,7 @@
 # BootPolish
 
+[![Build Status](https://travis-ci.org/zephyr-dev/boot_polish.png)](https://travis-ci.org/zephyr-dev/boot_polish)
+
 Boot time introspection to help you get under the heroku 60 second timeout.
 
 ## Installation
