@@ -3,8 +3,10 @@ require 'benchmark'
 module BootPolish
   class NestedBenchmark
 
-    def initialize(visitor)
-      @visitor = visitor
+    attr_accessor :visitor
+
+    def initialize(visitor = nil)
+      @visitor = visitor || DefaultRenderer.new
     end
 
     def nest method, &block

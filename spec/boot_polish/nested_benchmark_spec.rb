@@ -9,6 +9,32 @@ module BootPolish
       let(:visitor) { double(:visitor, benchmark: nil, descend: nil, ascend: nil) }
       let(:nested_benchmark) { NestedBenchmark.new( visitor ) }
 
+      describe "#visitor" do
+        context "is passed into new" do
+          it "is the same as the initalized value" do
+            nested_benchmark.visitor.should == visitor
+          end
+
+          it "can be changed" do
+            another_visitor = double(:another_visitor)
+            nested_benchmark.visitor = another_visitor
+            nested_benchmark.visitor.should == another_visitor
+          end
+        end
+
+        context "it is not passed into new" do
+          it "defaults to a new instance of DefaultRenderer" do
+            renderer = double(:renderer)
+            DefaultRenderer.should_receive(:new).and_return(renderer)
+
+            nested_benchmark = NestedBenchmark.new
+
+            nested_benchmark.visitor.should == renderer
+          end
+        end
+
+      end
+
       describe "#nest" do
         it "returns the blocks evaluated value" do
           nested_benchmark.nest("holas") do

@@ -1,10 +1,16 @@
 require 'boot_polish/nested_benchmark'
 require 'boot_polish/default_renderer'
 
-# def require(file)
-  # BootPolish.instance.nest "require #{file}" do
-    # super
-  # end
-# end
+module BootPolish
+  def self.require_benchmark
+    @require_benchmark ||= NestedBenchmark.new
+  end
+end
+
+def require(file)
+  BootPolish.require_benchmark.nest "require #{file}" do
+    super
+  end
+end
 
 
