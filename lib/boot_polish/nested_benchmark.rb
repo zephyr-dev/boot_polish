@@ -12,16 +12,36 @@ module BootPolish
     def nest method, &block
       result = nil
 
-      @visitor.descend
+      before_call
 
       time_to_run = Benchmark.measure do
-        result = yield
+        begin
+          result = yield
+        rescue Exception => e
+          after_call(method, nil, e)
+          raise e
+        end
+      end
+
+      after_call(method, time_to_run)
+
+      result
+    end
+
+    private
+    
+    def before_call 
+      @visitor.descend
+    end
+
+    def after_call(method, time_to_run, exception = nil)
+      if exception
+        @visitor.exception(method, exception)
+      else
+        @visitor.benchmark(method, time_to_run)
       end
 
       @visitor.ascend
-      @visitor.benchmark(method, time_to_run)
-
-      result
     end
 
   end

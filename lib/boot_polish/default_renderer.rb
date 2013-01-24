@@ -3,26 +3,31 @@ module BootPolish
 
     def initialize(output = nil)
       @output = output || STDOUT
-      @level = -1
+      @indent = -1
     end
 
     def descend
-      @level += 1
+      @indent += 1
     end
 
-    def ascend
-      @level -= 1
+    def exception(method, exception)
+      @output << "#{indent}#{method} raised #{exception.message}\n"
     end
 
     def benchmark method, time
-      @output << "#{indent}#{method} in #{time.real}\n"
+      @output << format("#{indent}%.4f for #{method}\n", time.real)
+    end
+
+    def ascend
+      @indent -= 1
     end
 
     private
 
     def indent
-      "  " * @level
+      "  " * @indent
     end
 
   end
+
 end

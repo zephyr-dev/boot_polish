@@ -24,3 +24,16 @@ Add the following line to your 'config/boot.rb' right after the require 'rubygem
 
     require 'boot_polish'
 
+I personally wrap it in a guard:
+
+    if ENV["BENCHMARK_REQUIRES"] && ENV["BENCHMARK_REQUIRES"] == 'true'
+      require 'boot_polish'
+    end
+
+## Todo
+
+ * Make it possible to specify the renderer used by the require_benchmark
+ * Introduce some basic network logging (on socket)
+ * Introduce basic HTTP logging
+ * Introduce a plugin architecture for testing specific hogs (fog, postgress, etc) 
+  

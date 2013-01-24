@@ -48,8 +48,8 @@ module BootPolish
 
         visitor.should_receive(:descend).ordered
         block_content.should_receive(:yield!).ordered
-        visitor.should_receive(:ascend).ordered
         visitor.should_receive(:benchmark).with("Hi", kind_of(Benchmark::Tms)).ordered
+        visitor.should_receive(:ascend).ordered
 
         nested_benchmark.nest("Hi") do
           block_content.yield!

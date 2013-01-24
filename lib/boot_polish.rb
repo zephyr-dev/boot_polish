@@ -4,8 +4,7 @@ require 'boot_polish/default_renderer'
 
 def require(file)
   BootPolish::Base.require_benchmark.nest "require #{file}" do
-    super
+    super(file)
   end
 end
-
 
