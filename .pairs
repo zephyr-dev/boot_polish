@@ -1,0 +1,21 @@
+pairs:
+  bw: Brent Wheeldon; brent
+  co: Cathy O'Connell; cathy
+  nm: Nick Monje; nmonje
+  eg: Evan Goodberry; egoodberry
+  bm: Ben Moss; bmoss
+  ck: Chien Kuo; ckuo
+  ec: Edwin Chong; echong
+  ab: Adam Berlin; aberlin
+  ra: Rasheed Abdul-Aziz; rabdulaziz
+  rm: Ryan McGarvey; ryan
+  jm: Johnny Mukai; johnny
+  js: James Somers; james
+  mt: Mark Thorn; mark
+  me: Maia Engeli; maia
+  mf: Michael Frederick; mike
+  gd: Geoffrey Ducharme; geoffrey
+  ak: Alex Kramer; alex
+email:
+  prefix: pair
+  domain: pivotallabs.com
