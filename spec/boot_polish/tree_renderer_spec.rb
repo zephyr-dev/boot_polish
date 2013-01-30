@@ -23,6 +23,15 @@ module BootPolish
           renderer.benchmark("footle", time)
           renderer.ascend
         end
+
+        it "allows for further annotation from the caller" do
+          output.should_receive(:<<).with(/(other)+/)
+          output.should_receive(:<<).with(anything).any_number_of_times
+
+          renderer.descend
+          renderer.benchmark("footle", time, ephemera: "some other thing")
+          renderer.ascend
+        end
       end
 
       describe "#exception" do

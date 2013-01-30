@@ -14,8 +14,8 @@ module BootPolish
       @output << "#{indent}#{method} raised #{exception.message}\n"
     end
 
-    def benchmark method, time
-      @output << format("#{indent}%.4f for #{method}\n", time.real)
+    def benchmark method, time, opts = {}
+      @output << format("#{indent}%.4f for #{method}  --  #{opts[:ephemera]}\n", time.real)
     end
 
     def ascend

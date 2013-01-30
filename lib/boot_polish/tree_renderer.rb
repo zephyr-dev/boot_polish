@@ -18,8 +18,8 @@ module BootPolish
       @current_node.content = { method: method, exception: exception }
     end
 
-    def benchmark method, time
-      @current_node.content = { method: method, time: time }
+    def benchmark method, time, opts = {}
+      @current_node.content = { method: method, time: time, ephemera: opts[:ephemera] }
     end
 
     def ascend
@@ -34,7 +34,7 @@ module BootPolish
       if result[:exception]
         @output << "#{result[:method]} raised exception: #{result[:exception].message}"
       else
-        @output << format("%.4f for #{result[:method]}", result[:time].real)
+        @output << format("%.4f for #{result[:method]}  --  #{result[:ephemera]}", result[:time].real)
       end
       @output << "\n"
 
